@@ -3,7 +3,7 @@
     <x:Property Name="in_dtInputData" Type="InArgument(sd:DataTable)" />
     <x:Property Name="io_LstNumsToRem_Forms" Type="InOutArgument(scg:List(x:Int32))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1231.3333333333333,1288.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>831.3333333333334,730.6666666666666</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -96,25 +96,25 @@
       <AssemblyReference>System.Collections</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="StartTheExercise" sap:VirtualizedContainerService.HintSize="598.6666666666666,1224" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence DisplayName="StartTheExercise" sap:VirtualizedContainerService.HintSize="552,666" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtInputData]" DisplayName="For Each Row in Data Table - dtInputData" sap:VirtualizedContainerService.HintSize="556.6666666666666,1134" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtInputData]" DisplayName="For Each Row in Data Table - dtInputData" sap:VirtualizedContainerService.HintSize="510,576" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="522.6666666666666,1005.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,447.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch - For each Transaction" sap:VirtualizedContainerService.HintSize="480.6666666666667,915.3333333333334" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch - For each Transaction" sap:VirtualizedContainerService.HintSize="434,357.3333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="boolRandomPop" />
               </TryCatch.Variables>
@@ -458,10 +458,10 @@
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="446.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,175.33333333333334" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -469,7 +469,7 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,104.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[exception.Message]" />
+                    <ui:LogMessage DisplayName="Log Message - Exception during Filling" sap:VirtualizedContainerService.HintSize="334,104.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[String.Format(&quot;Exception during filling forms. Message: {0} . Source {1}&quot;,exception.Message, exception.Source)]" />
                   </ActivityAction>
                 </Catch>
               </TryCatch.Catches>
