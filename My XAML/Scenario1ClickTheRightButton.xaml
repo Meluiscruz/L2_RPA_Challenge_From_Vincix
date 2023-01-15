@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Scenario1ClickTheRightButton" sap:VirtualizedContainerService.HintSize="913.3333333333334,2254.6666666666665" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Scenario1ClickTheRightButton" sap:VirtualizedContainerService.HintSize="1140,2332" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
       <x:String>System.Activities</x:String>
@@ -91,7 +91,7 @@
       <AssemblyReference>System.Collections</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Scenario1: Click the right button" sap:VirtualizedContainerService.HintSize="725.3333333333334,2190" sap2010:WorkflowViewState.IdRef="Sequence_20">
+  <Sequence DisplayName="Scenario1: Click the right button" sap:VirtualizedContainerService.HintSize="717.3333333333334,2267.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_20">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boolRandomPop" />
       <Variable x:TypeArguments="x:Int32" Name="IdxClickOnLab" />
@@ -102,12 +102,16 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:UiElementExists DisplayName="Element Exists - Random PopUp" Exists="[boolRandomPop]" sap:VirtualizedContainerService.HintSize="683.3333333333334,116" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+    <ui:UiElementExists DisplayName="Element Exists - Random PopUp" Exists="[boolRandomPop]" sap:VirtualizedContainerService.HintSize="675.3333333333334,107.33333333333333" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="21b743dd-e5f8-4139-b87b-d3f7c964e139" InformativeScreenshot="50c5d9d27edcad5f84329394d79b01e5" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl class='modal-header' parentid='modal_hackathon' tag='DIV' visibleinnertext='HACKATHON VINCIX GROUP' /&gt;" TimeoutMS="2000" WaitForReady="INTERACTIVE" />
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="21b743dd-e5f8-4139-b87b-d3f7c964e139" InformativeScreenshot="50c5d9d27edcad5f84329394d79b01e5" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl class='modal-header' parentid='modal_hackathon' tag='DIV' visibleinnertext='HACKATHON VINCIX GROUP' /&gt;" WaitForReady="INTERACTIVE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[boolRandomPop]" DisplayName="If there is any random popup" sap:VirtualizedContainerService.HintSize="683.3333333333334,1944" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[boolRandomPop]" DisplayName="If there is any random popup" sap:VirtualizedContainerService.HintSize="675.3333333333334,2032.6666666666667" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -115,11 +119,10 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="600.6666666666666,1674.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence sap:VirtualizedContainerService.HintSize="596.6666666666666,1750" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="PopUpLegend" />
-            <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="ListOfNums" />
-            <Variable x:TypeArguments="sd:DataTable" Name="LstOfOptions" />
+            <Variable x:TypeArguments="sd:DataTable" Name="dt_LstOfOptions" />
             <Variable x:TypeArguments="x:String" Name="RightOption" />
             <Variable x:TypeArguments="x:String" Name="strGetLabelToClick" />
           </Sequence.Variables>
@@ -128,15 +131,19 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - PopUp legend" sap:VirtualizedContainerService.HintSize="558.6666666666666,116" sap2010:WorkflowViewState.IdRef="GetValue_1">
+          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - PopUp legend" sap:VirtualizedContainerService.HintSize="554.6666666666666,107.33333333333333" sap2010:WorkflowViewState.IdRef="GetValue_1">
             <ui:GetValue.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="41673151-2911-4aa5-908a-fed4420eb1e1" InformativeScreenshot="77fb38dcc0b0fc397fd722a31349c505" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl tag='P' innertext='*' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="41673151-2911-4aa5-908a-fed4420eb1e1" InformativeScreenshot="77fb38dcc0b0fc397fd722a31349c505" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl tag='P' innertext='*' /&gt;" WaitForReady="INTERACTIVE">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+              </ui:Target>
             </ui:GetValue.Target>
             <ui:GetValue.Value>
               <OutArgument x:TypeArguments="x:String">[PopUpLegend]</OutArgument>
             </ui:GetValue.Value>
           </ui:GetValue>
-          <Assign DisplayName="Assign - Get label from legend only" sap:VirtualizedContainerService.HintSize="558.6666666666666,72" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign - Get label from legend only" sap:VirtualizedContainerService.HintSize="554.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[strGetLabelToClick]</OutArgument>
             </Assign.To>
@@ -144,19 +151,20 @@
               <InArgument x:TypeArguments="x:String">[PopUpLegend.Replace("Click the button with the label ","").Trim]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - To get all values from buttons" sap:VirtualizedContainerService.HintSize="558.6666666666666,402" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="c2e5d61d741da1100f16a44e876d9bb6" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;">
+          <ui:LogMessage DisplayName="Log Message - Extract the number" sap:VirtualizedContainerService.HintSize="554.6666666666666,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;The label is: &quot;+strGetLabelToClick]" />
+          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser - To get all values from buttons" sap:VirtualizedContainerService.HintSize="554.6666666666666,342" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="c2e5d61d741da1100f16a44e876d9bb6" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;">
             <ui:BrowserScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,206" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,194.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_17">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[LstOfOptions]" DisplayName="Extract text from buttons" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='button' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="10" SimulateClick="True">
+                  <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[dt_LstOfOptions]" DisplayName="Extract text from buttons" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='button' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="358,107.33333333333333" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="10" SimulateClick="True">
                     <ui:ExtractData.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="09669179-2411-499c-8527-5303b5b09dc0" InformativeScreenshot="9be489a53cd341be1f1c290ec6d81a43" Selector="&lt;webctrl class='row' parentid='modal_hackathon' tag='DIV' /&gt;" WaitForReady="INTERACTIVE">
                         <ui:Target.TimeoutMS>
@@ -169,31 +177,31 @@
               </ActivityAction>
             </ui:BrowserScope.Body>
           </ui:BrowserScope>
-          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[IdxClickOnLab]" DataTable="[LstOfOptions]" DisplayName="For Each Row in Data Table - List of texts inside buttons" sap:VirtualizedContainerService.HintSize="558.6666666666666,606.6666666666666" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[IdxClickOnLab]" DataTable="[dt_LstOfOptions]" DisplayName="For Each Row in Data Table - List of texts inside buttons" sap:VirtualizedContainerService.HintSize="554.6666666666666,599.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
             <ui:ForEachRow.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.6666666666666,481.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="520.6666666666666,482.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_13">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[CurrentRow(0).ToString.Trim = strGetLabelToClick]" DisplayName="If ButtonText = NumberOnLegend" sap:VirtualizedContainerService.HintSize="482.6666666666667,391.3333333333333" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If Condition="[CurrentRow(0).ToString.Trim = strGetLabelToClick]" DisplayName="If ButtonText = NumberOnLegend" sap:VirtualizedContainerService.HintSize="478.6666666666667,395.3333333333333" sap2010:WorkflowViewState.IdRef="If_2">
                     <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="400,122" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                      <Sequence sap:VirtualizedContainerService.HintSize="400,112.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_14">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:Break DisplayName="Break For Cycle (to get Index)" sap:VirtualizedContainerService.HintSize="358,32" sap2010:WorkflowViewState.IdRef="Break_1" />
+                        <ui:Break DisplayName="Break For Cycle (to get Index)" sap:VirtualizedContainerService.HintSize="358,25.333333333333332" sap2010:WorkflowViewState.IdRef="Break_1" />
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence sap:VirtualizedContainerService.HintSize="400,82.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                      <Sequence sap:VirtualizedContainerService.HintSize="400,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_15">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -212,7 +220,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEachRow>
-          <Assign DisplayName="Assign - RightOption as Dynamic Selector" sap:VirtualizedContainerService.HintSize="558.6666666666666,72" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign - RightOption as Dynamic Selector" sap:VirtualizedContainerService.HintSize="554.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[RightOption]</OutArgument>
             </Assign.To>
@@ -220,7 +228,7 @@
               <InArgument x:TypeArguments="x:String">[(IdxClickOnLab+1).ToString]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" CursorMotionType="Instant" DisplayName="Click on the right label - based on Dynamic selector" sap:VirtualizedContainerService.HintSize="558.6666666666666,116" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" CursorMotionType="Instant" DisplayName="Click on the right label - based on Dynamic selector" sap:VirtualizedContainerService.HintSize="554.6666666666666,107.33333333333333" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
             <ui:Click.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
@@ -232,7 +240,7 @@
               </ui:CursorPosition>
             </ui:Click.CursorPosition>
             <ui:Click.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="625ef9f5-ec24-4f35-83d6-3bdf8b9f925b" InformativeScreenshot="a2cf2664db7eb0e7f02be8cfe448a985" Selector="[string.Format(&quot;&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl tag='BUTTON' type='button' idx='{0}' /&gt;&quot;, RightOption)]" WaitForReady="NONE">
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="625ef9f5-ec24-4f35-83d6-3bdf8b9f925b" InformativeScreenshot="a2cf2664db7eb0e7f02be8cfe448a985" Selector="[string.Format(&quot;&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl aaname='*' tag='BUTTON' idx='{0}' /&gt;&quot;, RightOption)]" WaitForReady="NONE">
                 <ui:Target.TimeoutMS>
                   <InArgument x:TypeArguments="x:Int32" />
                 </ui:Target.TimeoutMS>
@@ -242,7 +250,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,82.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence sap:VirtualizedContainerService.HintSize="400,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

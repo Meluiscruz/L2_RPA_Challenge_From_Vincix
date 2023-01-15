@@ -1,8 +1,8 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Scenario2GetTheNumber" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="io_LstNumsToRem_Forms" Type="InOutArgument(scg:List(x:Int32))" />
+    <x:Property Name="io_LstNumsToRemForms" Type="InOutArgument(scg:List(x:Int32))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>913.3333333333334,1220.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>834,1213.3333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -94,7 +94,7 @@
       <AssemblyReference>System.Collections</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Scenario2: Get The Number" sap:VirtualizedContainerService.HintSize="524.6666666666666,1156" sap2010:WorkflowViewState.IdRef="Sequence_21">
+  <Sequence DisplayName="Scenario2: Get The Number" sap:VirtualizedContainerService.HintSize="596.6666666666666,1148.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_21">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boolNumToRem" />
     </Sequence.Variables>
@@ -104,16 +104,19 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:UiElementExists DisplayName="Element Exists - Number in legend" Exists="[boolNumToRem]" sap:VirtualizedContainerService.HintSize="482.6666666666667,116" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+    <ui:UiElementExists DisplayName="Element Exists - Number in legend" Exists="[boolNumToRem]" sap:VirtualizedContainerService.HintSize="554.6666666666666,107.33333333333333" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
       <ui:UiElementExists.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="aef9dc71-4825-46ec-b01c-fb199c48c582" InformativeScreenshot="90d23987c5a76862d083a604e1d16f1f" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl aaname='Remember this number: *' tag='DIV' /&gt;" TimeoutMS="2000">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="aef9dc71-4825-46ec-b01c-fb199c48c582" InformativeScreenshot="90d23987c5a76862d083a604e1d16f1f" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl aaname='Remember this number: *' tag='DIV' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
           <ui:Target.WaitForReady>
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
         </ui:Target>
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[boolNumToRem]" DisplayName="If there is a legend to remember" sap:VirtualizedContainerService.HintSize="482.6666666666667,910" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[boolNumToRem]" DisplayName="If there is a legend to remember" sap:VirtualizedContainerService.HintSize="554.6666666666666,914" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -121,7 +124,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,640.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_18">
+        <Sequence sap:VirtualizedContainerService.HintSize="476,631.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_18">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="strNumToRem" />
             <Variable x:TypeArguments="x:Int32" Name="intNumberOnly" />
@@ -131,7 +134,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - Extract Number from legend" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="GetValue_2">
+          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - Extract Number from legend" sap:VirtualizedContainerService.HintSize="434,107.33333333333333" sap2010:WorkflowViewState.IdRef="GetValue_2">
             <ui:GetValue.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="54cc3c0e-43a2-4b47-9cbc-10d9b76a0edb" InformativeScreenshot="1d7dedd8cbf76463dac3c0c01f0ddd65" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl aaname='Remember this number:*' tag='DIV' /&gt;">
                 <ui:Target.TimeoutMS>
@@ -146,7 +149,8 @@
               <OutArgument x:TypeArguments="x:String">[strNumToRem]</OutArgument>
             </ui:GetValue.Value>
           </ui:GetValue>
-          <Assign DisplayName="Assign - Get number only" sap:VirtualizedContainerService.HintSize="358,72" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <ui:LogMessage DisplayName="Log Message - Get the number to remember" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Remember this number for the final question: &quot;+strNumToRem]" />
+          <Assign DisplayName="Assign - Get number only" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[intNumberOnly]</OutArgument>
             </Assign.To>
@@ -154,19 +158,16 @@
               <InArgument x:TypeArguments="x:Int32">[Cint(strNumToRem.Replace("Remember this number: ","").Trim)]</InArgument>
             </Assign.Value>
           </Assign>
-          <InvokeMethod DisplayName="Invoke Method - Append to List" sap:VirtualizedContainerService.HintSize="358,144" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
+          <InvokeMethod DisplayName="Invoke Method - Append to List" sap:VirtualizedContainerService.HintSize="434,135.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
             <InvokeMethod.TargetObject>
-              <InArgument x:TypeArguments="scg:List(x:Int32)">[io_LstNumsToRem_Forms]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:Int32)">[io_LstNumsToRemForms]</InArgument>
             </InvokeMethod.TargetObject>
-            <InArgument x:TypeArguments="x:Int32">
-              <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="intNumberOnly" />
-            </InArgument>
+            <InArgument x:TypeArguments="x:Int32">[intNumberOnly]</InArgument>
           </InvokeMethod>
-          <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="358,98.66666666666667" sap2010:WorkflowViewState.IdRef="Delay_1" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="400,82.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
+        <Sequence sap:VirtualizedContainerService.HintSize="400,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_19">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

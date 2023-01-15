@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Scenario3Selecttheimage" sap:VirtualizedContainerService.HintSize="913.3333333333334,4127.333333333333" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/ocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Scenario3Selecttheimage" sap:VirtualizedContainerService.HintSize="1140,4016.6666666666665" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/ocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
       <x:String>System.Activities</x:String>
@@ -32,6 +32,8 @@
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Core.Activities.OCR.Engines</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -96,20 +98,21 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Scenario3: Select the image" sap:VirtualizedContainerService.HintSize="804,4062.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence DisplayName="Scenario3: Select the image" sap:VirtualizedContainerService.HintSize="872,3952" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="strToBeLookFor" />
-      <Variable x:TypeArguments="x:String" Name="strOCR_Target" />
-      <Variable x:TypeArguments="sd:DataTable" Name="MatrixOf_IMG" />
-      <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="IE_CurrentRow" />
+      <Variable x:TypeArguments="x:String" Name="StrToBeLookFor" />
+      <Variable x:TypeArguments="x:String" Name="StrOCRTarget" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_MatrixOfIMG" />
+      <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="IECurrentRow" />
       <Variable x:TypeArguments="x:Int32" Name="idxRow" />
       <Variable x:TypeArguments="x:Int32" Name="idxCol" />
       <Variable x:TypeArguments="x:Boolean" Name="boolBreakOutter" />
       <Variable x:TypeArguments="x:String" Name="dynSelCol" />
       <Variable x:TypeArguments="x:String" Name="dynSelRow" />
-      <Variable x:TypeArguments="x:String" Name="strOCR_Result" />
+      <Variable x:TypeArguments="x:String" Name="StrOCRResult" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -117,7 +120,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - get word to be look for" sap:VirtualizedContainerService.HintSize="762,116" sap2010:WorkflowViewState.IdRef="GetValue_1">
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - get word to be look for" sap:VirtualizedContainerService.HintSize="830,107.33333333333333" sap2010:WorkflowViewState.IdRef="GetValue_1">
       <ui:GetValue.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9a51142-a0da-4f9c-aa72-c253b3fb598b" InformativeScreenshot="3b427083d76d2e19a4c3dfc2543ae840" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl tag='LABEL' visibleinnertext='*' aaname='*' /&gt;">
           <ui:Target.TimeoutMS>
@@ -132,27 +135,27 @@
         <OutArgument x:TypeArguments="x:String">[strToBeLookFor]</OutArgument>
       </ui:GetValue.Value>
     </ui:GetValue>
-    <Assign DisplayName="Assign - Extract the exact word" sap:VirtualizedContainerService.HintSize="762,72" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign DisplayName="Assign - Extract the exact word" sap:VirtualizedContainerService.HintSize="830,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[strOCR_Target]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[StrOCRTarget]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">[strToBeLookFor.Replace("Extract coordinates' position of the text ","").Trim]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser 'VincixHac Page'" sap:VirtualizedContainerService.HintSize="762,362" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="8de48d49b58fe3bb810bc5008cec3b9e" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser 'VincixHac Page'" sap:VirtualizedContainerService.HintSize="830,342" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="8de48d49b58fe3bb810bc5008cec3b9e" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,206" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,194.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_23">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[MatrixOf_IMG]" DisplayName="Extract Structured Data - Matrix of Images" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='text' /&gt;&lt;column name='Column-1' attr='text' /&gt;&lt;column name='Column-2' attr='text' /&gt;&lt;column name='Column-3' attr='text' /&gt;&lt;column name='Column-4' attr='text' /&gt;&lt;column name='Column-5' attr='text' /&gt;&lt;column name='Column-6' attr='text' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="100" SimulateClick="True">
+            <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[dt_MatrixOfIMG]" DisplayName="Extract Structured Data - Matrix of Images" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='text' /&gt;&lt;column name='Column-1' attr='text' /&gt;&lt;column name='Column-2' attr='text' /&gt;&lt;column name='Column-3' attr='text' /&gt;&lt;column name='Column-4' attr='text' /&gt;&lt;column name='Column-5' attr='text' /&gt;&lt;column name='Column-6' attr='text' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="358,107.33333333333333" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="100" SimulateClick="True">
               <ui:ExtractData.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9d786e9b-98f8-48c0-8e1a-33b495dd61ed" InformativeScreenshot="7bf030207725f27e1963cfb71cc34fa8" Selector="&lt;webctrl tag='TABLE' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
@@ -165,59 +168,59 @@
         </ActivityAction>
       </ui:BrowserScope.Body>
     </ui:BrowserScope>
-    <ui:RemoveDataRow Row="{x:Null}" DataTable="[MatrixOf_IMG]" DisplayName="Remove Data Row - Remove ColHeaders" sap:VirtualizedContainerService.HintSize="762,200" sap2010:WorkflowViewState.IdRef="RemoveDataRow_1" RowIndex="0" />
-    <ui:RemoveDataColumn Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="0" DataTable="[MatrixOf_IMG]" DisplayName="Remove Data Column - Remove RowHeaders" sap:VirtualizedContainerService.HintSize="762,200" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_1" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[idxRow]" DataTable="[MatrixOf_IMG]" DisplayName="For Each Row in Data Table - Traverse along  MatrixOf_IMG" sap:VirtualizedContainerService.HintSize="762,1992.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:RemoveDataRow Row="{x:Null}" DataTable="[dt_MatrixOfIMG]" DisplayName="Remove Data Row - Remove ColHeaders" sap:VirtualizedContainerService.HintSize="830,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataRow_1" RowIndex="0" />
+    <ui:RemoveDataColumn Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="0" DataTable="[dt_MatrixOfIMG]" DisplayName="Remove Data Column - Remove RowHeaders" sap:VirtualizedContainerService.HintSize="830,191.33333333333334" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_1" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[idxRow]" DataTable="[dt_MatrixOfIMG]" DisplayName="For Each Row in Data Table - Traverse along  MatrixOf_IMG" sap:VirtualizedContainerService.HintSize="830,1969.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="728,1864" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <Sequence DisplayName="Sequence: Analize each image" sap:VirtualizedContainerService.HintSize="796,1849.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_17">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[boolBreakOutter]" DisplayName="If - to break the outter cycle" sap:VirtualizedContainerService.HintSize="686,1774" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[boolBreakOutter]" DisplayName="If - to break the outter cycle" sap:VirtualizedContainerService.HintSize="754,1762" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="400,122" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <Sequence sap:VirtualizedContainerService.HintSize="400,112.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_18">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Break DisplayName="Break - Outter Cycle" sap:VirtualizedContainerService.HintSize="358,32" sap2010:WorkflowViewState.IdRef="Break_2" />
+                  <ui:Break DisplayName="Break - Outter Cycle" sap:VirtualizedContainerService.HintSize="358,25.333333333333332" sap2010:WorkflowViewState.IdRef="Break_2" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="603.3333333333334,1482.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence sap:VirtualizedContainerService.HintSize="675.3333333333334,1466.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign - Cast from DataRow to IEnumerate" sap:VirtualizedContainerService.HintSize="561.3333333333334,72" sap2010:WorkflowViewState.IdRef="Assign_9">
+                  <Assign DisplayName="Assign - Cast from DataRow to IEnumerate" sap:VirtualizedContainerService.HintSize="633.3333333333334,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_9">
                     <Assign.To>
-                      <OutArgument x:TypeArguments="scg:IEnumerable(x:Object)">[IE_CurrentRow]</OutArgument>
+                      <OutArgument x:TypeArguments="scg:IEnumerable(x:Object)">[IECurrentRow]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="scg:IEnumerable(x:Object)">[CurrentRow.ItemArray]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="[idxCol]" DisplayName="For Each - Inner Cycle" sap:VirtualizedContainerService.HintSize="561.3333333333334,1280.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[IE_CurrentRow]">
+                  <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="[idxCol]" DisplayName="For Each - Inner Cycle" sap:VirtualizedContainerService.HintSize="633.3333333333334,1254" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[IECurrentRow]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.6666666666666,1146" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="596.6666666666666,1128" sap2010:WorkflowViewState.IdRef="Sequence_22">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:MultipleAssign DisplayName="Multiple Assign - Dynamic Selectors" sap:VirtualizedContainerService.HintSize="482.6666666666667,140" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                          <ui:MultipleAssign DisplayName="Multiple Assign - Dynamic Selectors" sap:VirtualizedContainerService.HintSize="554.6666666666666,131.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                             <ui:MultipleAssign.AssignOperations>
                               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -239,13 +242,13 @@
                               </scg:List>
                             </ui:MultipleAssign.AssignOperations>
                           </ui:MultipleAssign>
-                          <ui:GetOCRText Text="{x:Null}" WordsInfo="{x:Null}" DisplayName="Get OCR Text - For Each Image" sap:VirtualizedContainerService.HintSize="482.6666666666667,188" sap2010:WorkflowViewState.IdRef="GetOCRText_1">
+                          <ui:GetOCRText Text="{x:Null}" WordsInfo="{x:Null}" DisplayName="Get OCR Text - For Each Image" sap:VirtualizedContainerService.HintSize="554.6666666666666,172.66666666666666" sap2010:WorkflowViewState.IdRef="GetOCRText_1">
                             <ui:GetOCRText.OCREngine>
                               <ActivityFunc x:TypeArguments="sd1:Image, scg:IEnumerable(scg:KeyValuePair(sd2:Rectangle, x:String))">
                                 <ActivityFunc.Argument>
                                   <DelegateInArgument x:TypeArguments="sd1:Image" Name="Image" />
                                 </ActivityFunc.Argument>
-                                <p:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPath Screen OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_4" Image="[Image]" Language="auto" Profile="Screen" Scale="1" Text="[strOCR_Result]" Timeout="100000" />
+                                <p:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPath Screen OCR Core" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,25.333333333333332" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_4" Image="[Image]" Language="auto" Profile="Screen" Scale="1" Text="[strOCRResult]" Timeout="100000" />
                               </ActivityFunc>
                             </ui:GetOCRText.OCREngine>
                             <ui:GetOCRText.Target>
@@ -259,8 +262,8 @@
                               </ui:Target>
                             </ui:GetOCRText.Target>
                           </ui:GetOCRText>
-                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="482.6666666666667,104.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[strOCR_Result]" />
-                          <If Condition="[strOCR_Target.Trim.ToLower=strOCR_Result.Trim.ToLower]" DisplayName="If - Stop criteria for Inner Cycle" sap:VirtualizedContainerService.HintSize="482.6666666666667,503.3333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+                          <ui:LogMessage DisplayName="Log Message - Display StrOCRResult" sap:VirtualizedContainerService.HintSize="554.6666666666666,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[StrOCRResult]" />
+                          <If Condition="[strOCRResult.Trim.ToLower.Contains(StrOCRTarget.Trim.ToLower)]" DisplayName="If - Stop criteria for Inner Cycle" sap:VirtualizedContainerService.HintSize="554.6666666666666,520.6666666666666" sap2010:WorkflowViewState.IdRef="If_3">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -268,13 +271,13 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <Sequence sap:VirtualizedContainerService.HintSize="400,234" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                              <Sequence sap:VirtualizedContainerService.HintSize="476,238" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Assign - boolBreakOut" sap:VirtualizedContainerService.HintSize="358,72" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                <Assign DisplayName="Assign - boolBreakOut" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_10">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:Boolean">[boolBreakOutter]</OutArgument>
                                   </Assign.To>
@@ -282,11 +285,11 @@
                                     <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <ui:Break DisplayName="Break - Inner Cycle" sap:VirtualizedContainerService.HintSize="358,32" sap2010:WorkflowViewState.IdRef="Break_3" />
+                                <ui:Break DisplayName="Break - Inner Cycle" sap:VirtualizedContainerService.HintSize="434,25.333333333333332" sap2010:WorkflowViewState.IdRef="Break_3" />
                               </Sequence>
                             </If.Then>
                             <If.Else>
-                              <Sequence sap:VirtualizedContainerService.HintSize="400,82.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <Sequence sap:VirtualizedContainerService.HintSize="400,81.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_21">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -318,13 +321,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base - Set up Column" sap:VirtualizedContainerService.HintSize="762,246" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base - Set up Column" sap:VirtualizedContainerService.HintSize="830,228.66666666666666" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
       <ui:AnchorBase.Action>
         <ActivityAction x:TypeArguments="ui:Anchor">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
           </ActivityAction.Argument>
-          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into - Column TextBox" sap:VirtualizedContainerService.HintSize="334,144" sap2010:WorkflowViewState.IdRef="TypeInto_5" SimulateType="True" Text="[(CInt(dynSelCol)-1).ToString]">
+          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into - Column TextBox" sap:VirtualizedContainerService.HintSize="334,135.33333333333334" sap2010:WorkflowViewState.IdRef="TypeInto_5" SimulateType="True" Text="[(CInt(dynSelCol)-1).ToString]">
             <ui:TypeInto.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2f8f5ae4-5505-4b42-8626-943fb5977a08" InformativeScreenshot="a7bcbcbf9f3888b69317fe670d0cb31a" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="COMPLETE">
                 <ui:Target.TimeoutMS>
@@ -336,7 +339,7 @@
         </ActivityAction>
       </ui:AnchorBase.Action>
       <ui:AnchorBase.AnchorProvider>
-        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element Column Tag" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element Column Tag" sap:VirtualizedContainerService.HintSize="334,107.33333333333333" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
           <ui:WaitUiElementAppear.Target>
             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="989f8f48-0ecc-48f1-a34a-cd1e0e158272" InformativeScreenshot="fa661781dbc6e70a53e9368fb193a63f" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl aaname='Column' tag='LABEL' /&gt;">
               <ui:Target.TimeoutMS>
@@ -350,13 +353,13 @@
         </ui:WaitUiElementAppear>
       </ui:AnchorBase.AnchorProvider>
     </ui:AnchorBase>
-    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base - Set up Row" sap:VirtualizedContainerService.HintSize="762,246" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
+    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base - Set up Row" sap:VirtualizedContainerService.HintSize="830,228.66666666666666" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
       <ui:AnchorBase.Action>
         <ActivityAction x:TypeArguments="ui:Anchor">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
           </ActivityAction.Argument>
-          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into - Row TextBox" sap:VirtualizedContainerService.HintSize="334,144" sap2010:WorkflowViewState.IdRef="TypeInto_6" SimulateType="True" Text="[(CInt(dynSelRow)-1).ToString]">
+          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into - Row TextBox" sap:VirtualizedContainerService.HintSize="334,135.33333333333334" sap2010:WorkflowViewState.IdRef="TypeInto_6" SimulateType="True" Text="[(CInt(dynSelRow)-1).ToString]">
             <ui:TypeInto.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="adaccb84-6e64-49cb-9878-129a1d8283f6" InformativeScreenshot="5bb054b022b941e71e21388ae3900038" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="COMPLETE">
                 <ui:Target.TimeoutMS>
@@ -368,7 +371,7 @@
         </ActivityAction>
       </ui:AnchorBase.Action>
       <ui:AnchorBase.AnchorProvider>
-        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element - Row Tag" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element - Row Tag" sap:VirtualizedContainerService.HintSize="334,107.33333333333333" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
           <ui:WaitUiElementAppear.Target>
             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3f92e8ea-1665-4593-9bc8-b9ba62ccf010" InformativeScreenshot="172921206ac37fa7b5b2cd0b1d575aa8" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl aaname='Row' tag='LABEL' /&gt;">
               <ui:Target.TimeoutMS>
@@ -382,13 +385,13 @@
         </ui:WaitUiElementAppear>
       </ui:AnchorBase.AnchorProvider>
     </ui:AnchorBase>
-    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base - Click on Submit" sap:VirtualizedContainerService.HintSize="762,218" sap2010:WorkflowViewState.IdRef="AnchorBase_3">
+    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base - Click on Submit" sap:VirtualizedContainerService.HintSize="830,200.66666666666666" sap2010:WorkflowViewState.IdRef="AnchorBase_3">
       <ui:AnchorBase.Action>
         <ActivityAction x:TypeArguments="ui:Anchor">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
           </ActivityAction.Argument>
-          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click to Submit Results" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click to Submit Results" sap:VirtualizedContainerService.HintSize="334,107.33333333333333" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
             <ui:Click.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
@@ -410,7 +413,7 @@
         </ActivityAction>
       </ui:AnchorBase.Action>
       <ui:AnchorBase.AnchorProvider>
-        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element - Fixed Tag" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
+        <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element - Fixed Tag" sap:VirtualizedContainerService.HintSize="334,107.33333333333333" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
           <ui:WaitUiElementAppear.Target>
             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1af1a533-9246-4ab6-95a3-02d7f1deaf7f" InformativeScreenshot="7cfc02750c668de3ad94bdd4442ebe12" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl aaname='Column' tag='LABEL' /&gt;">
               <ui:Target.TimeoutMS>

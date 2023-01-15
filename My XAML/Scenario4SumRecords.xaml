@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="io_ListOfNumbers" Type="InOutArgument(scg:List(x:Int32))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>913.3333333333334,2368</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1140,2372.6666666666665</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -108,11 +108,16 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Scenario4SumRecords" sap:VirtualizedContainerService.HintSize="768,2303.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_26">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="Scenario4SumRecords" sap:VirtualizedContainerService.HintSize="768,2308" sap2010:WorkflowViewState.IdRef="Sequence_26">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="intFinalAnswer" />
       <Variable x:TypeArguments="x:String" Name="strInstructions" />
-      <Variable x:TypeArguments="x:String" Name="RegExPattern" />
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="arrMatchesOfOp" />
       <Variable x:TypeArguments="x:String" Name="strOperation" />
     </Sequence.Variables>
@@ -121,17 +126,19 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="My XAML\Scenario1ClickTheRightButton.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="726,124" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="My XAML\Scenario1ClickTheRightButton.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="My XAML\Scenario1ClickTheRightButton.xaml " sap:VirtualizedContainerService.HintSize="726,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="My XAML\Scenario1ClickTheRightButton.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="My XAML\Scenario2GetTheNumber.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="726,124" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="My XAML\Scenario2GetTheNumber.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="My XAML\Scenario2GetTheNumber.xaml" sap:VirtualizedContainerService.HintSize="726,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="My XAML\Scenario2GetTheNumber.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="scg:List(x:Int32)" x:Key="io_LstNumsToRem_Forms">[io_ListOfNumbers]</InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:Int32)" x:Key="io_LstNumsToRemForms">
+          <VisualBasicReference x:TypeArguments="scg:List(x:Int32)" ExpressionText="io_ListOfNumbers" />
+        </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - Instructions" sap:VirtualizedContainerService.HintSize="726,116" sap2010:WorkflowViewState.IdRef="GetValue_1">
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - Instructions" sap:VirtualizedContainerService.HintSize="726,107.33333333333333" sap2010:WorkflowViewState.IdRef="GetValue_1">
       <ui:GetValue.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d5b7b7fb-ec94-4540-aee5-95963e7a5300" InformativeScreenshot="f5f23db062d3568eb0e99691b4bd6237" Selector="&lt;html app='msedge.exe' title='Vincix Hackathon' /&gt;&lt;webctrl tag='LABEL' /&gt;">
           <ui:Target.TimeoutMS>
@@ -146,7 +153,7 @@
         <OutArgument x:TypeArguments="x:String">[strInstructions]</OutArgument>
       </ui:GetValue.Value>
     </ui:GetValue>
-    <ui:Matches BuilderPattern="[A-Z]{3,15}" DisplayName="Matches - What is the operation?" sap:VirtualizedContainerService.HintSize="726,68.66666666666667" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[strInstructions]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;[A-Z]&quot;,&quot;QuantifierFirstValue&quot;:&quot;3&quot;,&quot;QuantifierID&quot;:&quot;BXYT&quot;,&quot;QuantifierName&quot;:&quot;Between x and y times&quot;,&quot;QuantifierSecondValue&quot;:&quot;15&quot;}]" Pattern="[A-Z]{3,15}" RegexOption="Compiled" Result="[arrMatchesOfOp]" />
+    <ui:Matches BuilderPattern="[A-Z]{3,15}" DisplayName="Matches - What is the operation?" sap:VirtualizedContainerService.HintSize="726,60" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[strInstructions]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;[A-Z]&quot;,&quot;QuantifierFirstValue&quot;:&quot;3&quot;,&quot;QuantifierID&quot;:&quot;BXYT&quot;,&quot;QuantifierName&quot;:&quot;Between x and y times&quot;,&quot;QuantifierSecondValue&quot;:&quot;15&quot;}]" Pattern="[A-Z]{3,15}" RegexOption="Compiled" Result="[arrMatchesOfOp]" />
     <Assign DisplayName="Assign - Operation" sap:VirtualizedContainerService.HintSize="726,72" sap2010:WorkflowViewState.IdRef="Assign_13">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strOperation]</OutArgument>
@@ -155,30 +162,13 @@
         <InArgument x:TypeArguments="x:String">[arrMatchesOfOp(0).ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="726,62.666666666666664" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,185.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_34">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="358,95.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[strOperation]" />
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="726,862" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+    <ui:LogMessage DisplayName="Log Message - What operation does it choose?" sap:VirtualizedContainerService.HintSize="726,104.66666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;{0}({1},{2})&quot;,strOperation,io_ListOfNumbers(0).ToString,io_ListOfNumbers(1).ToString)]" />
+    <ui:IfElseIf DisplayName="Else If - Define the operation" sap:VirtualizedContainerService.HintSize="726,862" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
       <ui:IfElseIf.ConditionBlocks>
         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
           <ui:IfElseIfBlock BlockType="If" Condition="[strOperation.Trim.Contains(&quot;SUM&quot;)]">
             <ui:IfElseIfBlock.Then>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,162" sap2010:WorkflowViewState.IdRef="Sequence_27">
+              <Sequence DisplayName="Operation is Sum" sap:VirtualizedContainerService.HintSize="400,162" sap2010:WorkflowViewState.IdRef="Sequence_27">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -195,15 +185,15 @@
               </Sequence>
             </ui:IfElseIfBlock.Then>
           </ui:IfElseIfBlock>
-          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[strOperation.Trim is &quot;MULTIPLICATION&quot;]">
+          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[strOperation.Trim.Contains(&quot;MULTIPLICATION&quot;)]">
             <ui:IfElseIfBlock.Then>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,162" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <Sequence DisplayName="Operation is Multiplication" sap:VirtualizedContainerService.HintSize="400,162" sap2010:WorkflowViewState.IdRef="Sequence_29">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign - Get the Final Answer Substraction" sap:VirtualizedContainerService.HintSize="358,72" sap2010:WorkflowViewState.IdRef="Assign_15">
+                <Assign DisplayName="Assign - Get the Final Answer - Multiplication" sap:VirtualizedContainerService.HintSize="358,72" sap2010:WorkflowViewState.IdRef="Assign_15">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[intFinalAnswer]</OutArgument>
                   </Assign.To>
@@ -216,7 +206,7 @@
           </ui:IfElseIfBlock>
           <ui:IfElseIfBlock BlockType="Else">
             <ui:IfElseIfBlock.Then>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,162" sap2010:WorkflowViewState.IdRef="Sequence_33">
+              <Sequence DisplayName="Operation is Substraction" sap:VirtualizedContainerService.HintSize="400,162" sap2010:WorkflowViewState.IdRef="Sequence_33">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -271,7 +261,7 @@
         </ui:WaitUiElementAppear>
       </ui:AnchorBase.AnchorProvider>
     </ui:AnchorBase>
-    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="726,218" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
+    <ui:AnchorBase AnchorPosition="Auto" DisplayName="Anchor Base - To click Submit Button" sap:VirtualizedContainerService.HintSize="726,218" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
       <ui:AnchorBase.Action>
         <ActivityAction x:TypeArguments="ui:Anchor">
           <ActivityAction.Argument>
